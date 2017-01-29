@@ -12,8 +12,8 @@ class MainPage(webapp2.RequestHandler):
 	def get(self):
 		current_time = datetime.datetime.now()
 		user = users.get_current_user()
-	        login_url = users.create_login_url(self.request.path)
-       		logout_url = users.create_logout_url(self.request.path)
+		login_url = users.create_login_url(self.request.path)
+		logout_url = users.create_logout_url(self.request.path)
 
 		userprefs = models.get_userprefs()
 

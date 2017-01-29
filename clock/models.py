@@ -1,9 +1,9 @@
 from google.appengine.api import users
-from google.appengine.ext import db
+from google.appengine.ext import ndb
 
-class UserPrefs(db.Model):
-	tz_offset =  db.IntegerProperty(default = 0)
-	user = db.UserProperty(auto_current_user_add = True)
+class UserPrefs(ndb.Model):
+	tz_offset =  ndb.IntegerProperty(default = 0)
+	user = ndb.UserProperty(auto_current_user_add = True)
 
 def get_userprefs(user_id=None):
 	if not user_id:
@@ -12,8 +12,8 @@ def get_userprefs(user_id=None):
 			return None
 		user_id = user.user_id()
 
-	key = db.Key.from_path('UserPrefs',user_id)
-	userprefs = db.get(key)
+	key = ndb.Key('UserPrefs',user_id)
+	userprefs = key.get()
 	if not userprefs:
-		userprefs = UserPrefs(key_name=user_id)
+		userprefs = UserPrefs(id=user_id)
 	return userprefs

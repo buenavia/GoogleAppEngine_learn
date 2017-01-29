@@ -67,6 +67,7 @@ new_allowed_methods = allowed_methods.union(('PATCH',))
 webapp2.WSGIApplication.allowed_methods = new_allowed_methods
 
 # [START app]
+# Turns out we can define our paths here or in app.yaml file.
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/fish', FishHandler),

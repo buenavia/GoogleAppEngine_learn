@@ -4,6 +4,7 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+# we could either define our URL paths here or inside the WSGI instance.
 handlers:
 - url: /prefs
   script: prefs.application
@@ -14,10 +15,10 @@ handlers:
 
 libraries:
 - name: webapp2
-  version: "2.5.1"
+  version: "2.5.2"
 - name: jinja2
-  version: latest
+  version: "2.6"
 - name: markupsafe
-  version: latest
+  version: "0.15"
 
 
