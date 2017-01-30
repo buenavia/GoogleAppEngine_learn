@@ -34,7 +34,8 @@ class FishHandler(webapp2.RequestHandler):
 	def post(self):
 		parent_key = ndb.Key(Fish, "parent_fish")
 		fish_data = json.loads(self.request.body)
-		new_fish = Fish(name=fish_data['name'], parent=parent_key)
+		new_fish = Fish(name=fish_data['name'], 
+			parent=parent_key)
 		new_fish.put() 									#Model section of NDB docs
 
 		#self-links
@@ -67,7 +68,6 @@ new_allowed_methods = allowed_methods.union(('PATCH',))
 webapp2.WSGIApplication.allowed_methods = new_allowed_methods
 
 # [START app]
-# Turns out we can define our paths here or in app.yaml file.
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/fish', FishHandler),

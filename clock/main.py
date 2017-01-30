@@ -5,6 +5,7 @@ import webapp2
 import models
 
 from google.appengine.api import users
+from google.appengine.ext import ndb
 
 template_env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.getcwd()))
 
@@ -29,7 +30,7 @@ class MainPage(webapp2.RequestHandler):
 			'userprefs': userprefs
         	}
 
-		self.response.out.write(template.render(context))
+		self.response.out.write(template.render(context))	#have template instance render with context data
 
 application = webapp2.WSGIApplication([('/', MainPage)],debug=True)
 

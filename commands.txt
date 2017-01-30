@@ -1,0 +1,5 @@
+To deploy an app:
+	gcloud app deploy
+
+to set a project as current project
+	gcloud config set project [project]
